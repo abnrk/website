@@ -33,7 +33,7 @@
       $data = str_replace("href=\"/url", "href=\"/url.php", $data);
     }
     for($i=1;$i<2;$i++) {
-    $data = preg_replace('/<div data-ved="[0-9a-zA-Z_-]*">.*AI Overview[ -~]*<\/span><\/div><\/div><\/div>/',"",$data);
+    $data = preg_replace('/<div data-ved="[0-9a-zA-Z_-]*">.*AI Overview.*?<\/span><\/div><\/div><\/div>/',"",$data);
     }
     echo $data;
 ?>
