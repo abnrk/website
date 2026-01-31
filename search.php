@@ -1,6 +1,4 @@
-<html>
-  <head>
-    <?php
+<?php
     $search = urlencode($_GET["q"]);
     if(isset($_GET['tbm'])){
       if (htmlspecialchars($_GET["tbm"]) == 'isch') {
@@ -9,11 +7,6 @@
       }else{
         $mode = 'all';
       }
-    ?>
-    <!-- <title><?php echo $search . ' - PHP Proxy'?></title> -->
-  </head>
-  <body>
-    <?php
     $opts = [
      "http" => [
        "header" => "User-Agent: Opera/9.80 (J2ME/MIDP; Opera Mini/8.0; U; en) Presto/2.12.423 Version/12.16",
@@ -39,8 +32,8 @@
       $data = str_replace("href=\"/?sa", "href=\"/google.php?sa", $data);
       $data = str_replace("href=\"/url", "href=\"/url.php", $data);
     }
-    $data = preg_replace('/<div data-ved="[0-9a-zA-Z]*">.*AI Overview[ -~]*<\/span><\/div><\/div><\/div>/',"",$data);
+    for($i=1;$i<2;$i++) {
+    $data = preg_replace('/<div data-ved="[0-9a-zA-Z_-]*">.*AI Overview.*<\/span><\/div><\/div><\/div>/',"",$data);
+    }
     echo $data;
-    ?>
-  </body>
-</html>
+?>
