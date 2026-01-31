@@ -1,7 +1,7 @@
 <html>
   <head>
     <?php
-    $search = urlencode(htmlspecialchars($_GET["q"]));
+    $search = urlencode($_GET["q"]);
     if(isset($_GET['tbm'])){
       if (htmlspecialchars($_GET["tbm"]) == 'isch') {
         $mode = 'img';
