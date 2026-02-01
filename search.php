@@ -21,7 +21,7 @@
       }
       $data = str_replace("href=\"/search", "href=\"/search.php", $data);
       $data = str_replace("href=\"/?sa", "href=\"/google.php?sa", $data);
-      $data = str_replace("href=\"/url", "href=\"/url.php", $data);
+      //$data = str_replace("href=\"/url", "href=\"/url.php", $data);
     } elseif ($mode == 'img') {
       if (isset($_GET['start'])) {
           $data = file_get_contents('https://www.google.com/search?q=' . $search . '&tbm=isch' . "&start=" . $_GET['start'],false,$context);
@@ -30,10 +30,9 @@
       }
       $data = str_replace("href=\"/search", "href=\"/search.php", $data);
       $data = str_replace("href=\"/?sa", "href=\"/google.php?sa", $data);
-      $data = str_replace("href=\"/url", "href=\"/url.php", $data);
+      //$data = str_replace("href=\"/url", "href=\"/url.php", $data);
     }
-    for($i=1;$i<2;$i++) {
+    $data = preg_replace('/\/url\?q=(.*?)&amp;sa.*?"/','$1"',$data);
     $data = preg_replace('/<div data-ved="[0-9a-zA-Z_-]*">.*AI Overview.*?<\/span><\/div><\/div><\/div>/',"",$data);
-    }
     echo $data;
 ?>
