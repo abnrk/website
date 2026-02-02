@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Searx Randomizer</title>
+</head>
+<body>
+<script>
+var instances = ["darmarit.org/searx", "fairsuch.net", "northboot.xyz", "nyc1.sx.ggtyler.dev", "search.citw.lgbt", "search.datura.network", "search.hbubli.cc", "search.im-in.space", "search.indst.eu", "search.mdosch.de", "search.nadeko.net", "search.nerdvpn.de", "search.ngn.tf", "search.ononoki.org", "search.rowie.at", "search.us.projectsegfau.lt", "searx.baczek.me", "searx.colbster937.dev", "searx.daetalytica.io", "searx.dresden.network", "searx.lunar.icu", "searx.namejeff.xyz", "searx.tuxcloud.net", "searx.work", "searxng.site", "sx.catgirl.cloud", "sxng.violets-purgatory.dev", "www.gruble.de", "xo.wtf"];
+var url = "https://" + instances[Math.floor(Math.random()*instances.length)] + "/search" + location.search;
+location.href = url;
+</script>
+</body>
+</html>
