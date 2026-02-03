@@ -18,12 +18,15 @@ $opts = [
 ];
 $context = stream_context_create($opts);
 $data = file_get_contents($engines[ENGINE] . $_SERVER["QUERY_STRING"],false,$context);
-if(ENGINE == "google" or ENGINE == "bing") {
+if(ENGINE == "google") {
+  $data = substr_replace($data,'<link rel="icon" href="google.ico"/>',strpos($data,"<head>")+strlen("<head>"),0);
   $data = str_replace("href=\"/search", "href=\"/search.php", $data);
   $data = str_replace("href=\"/?sa", "href=\"/google.php?sa", $data);
   //$data = str_replace("href=\"/url", "href=\"/url.php", $data);
   $data = preg_replace('/\/url\?q=(.*?)&amp;sa.*?"/','$1"',$data);
   $data = preg_replace('/<div data-ved="[0-9a-zA-Z_-]*">.*AI Overview.*?<\/span><\/div><\/div><\/div>/',"",$data);
+}
+if(ENGINE == "bing") {
 }
 if(ENGINE == "yahoo") {
   $data = str_replace('href="https://search.yahoo.com/search','href="/search.php',$data);
