@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="icon" href="favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="opensearch.xml" title="Google"/>
+<title>Google</title>
+</head>
+<body>
+<script>
+function installSearchPlugin() {
+  window.external.AddSearchProvider("/opensearch.xml");
+}
+</script>
+<button onclick="installSearchPlugin();">Install Search Plugin</button>
+</body>
+</html>
