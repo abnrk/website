@@ -1,12 +1,21 @@
 <?php
 define("ENGINE","google");
+define("YAHOO_UI_MODE",2); // 1 = new ui, 2 = old ui
 $engines = [
   "google" => "https://www.google.com/search?",
   "yahoo" => "https://search.yahoo.com/search?",
   "bing" => "https://www.bing.com/search?",
   "duckduckgo" => "https://duckduckgo.com/?",
 ];
-$user_agent = "Opera/9.80 (J2ME/MIDP; Opera Mini/8.0; U; en) Presto/2.12.423 Version/12.16";
+if(YAHOO_UI_MODE == 2) {
+  $engines["yahoo"] = "https://search.yahoo.com/yhs/search?";
+}
+if(ENGINE != "google") {
+  $user_agent = "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko";
+}
+if(ENGINE == "google" || str_contains($_SERVER["HTTP_USER_AGENT"],"Mobile")) {
+  $user_agent = "Opera/9.80 (J2ME/MIDP; Opera Mini/8.0; U; en) Presto/2.12.423 Version/12.16";
+}
 if(ENGINE == "bing") {
   //$user_agent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; Trident/4.0)";
   $user_agent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows CE; IEMobile 7.11)";
