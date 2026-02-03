@@ -17,7 +17,9 @@ if(ENGINE == "google" || str_contains($_SERVER["HTTP_USER_AGENT"],"Mobile")) {
   $user_agent = "Opera/9.80 (J2ME/MIDP; Opera Mini/8.0; U; en) Presto/2.12.423 Version/12.16";
 }
 if(ENGINE == "bing") {
-  //$user_agent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; Trident/4.0)";
+  $user_agent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; Trident/4.0)";
+}
+if(ENGINE == "bing" && str_contains($_SERVER["HTTP_USER_AGENT"],"Mobile")) {
   $user_agent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows CE; IEMobile 7.11)";
 }
 $opts = [
